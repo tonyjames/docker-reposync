@@ -11,8 +11,7 @@ fi
 
 for repo in $(cat $repos_file); do
     echo "### BEGIN $repo ###"
-    docker run --rm --security-opt label=disable -v $repos_volume:/repos $image reposync -l -p /repos -r $repo --downloadcomps --download-metadata
-    docker run --rm --security-opt label=disable -v $repos_volume:/repos $image createrepo /repos/$repo
+    sudo docker run --rm --security-opt label=disable -v $repos_volume:/repos $image reposync -l -p /repos -r $repo --downloadcomps --download-metadata
+    sudo docker run --rm --security-opt label=disable -v $repos_volume:/repos $image createrepo /repos/$repo
     echo "### END $repo ###"
 done
-
