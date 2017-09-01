@@ -5,7 +5,7 @@ repos_volume=$2
 repos_file=$3
 
 if [ -z $image ] || [ -z $repos_volume ] || [ -z $repos_file ]; then
-   echo "Usage: [image] [repos_volume] [repos_file]"
+   echo "Usage: run-reposync.sh [image] [repos_volume] [repos_file]"
    exit
 fi
 
