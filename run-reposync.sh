@@ -9,9 +9,9 @@ if [ -z $image ] || [ -z $repos_volume ] || [ -z $repos_file ]; then
    exit
 fi
 
-for repo in $(cat $repos_file); do
+for repo in $(cat $repos_file |grep -v "#"); do
     echo "### BEGIN $repo ###"
     sudo docker run --rm --security-opt label=disable -v $repos_volume:/repos $image reposync -l -p /repos -r $repo --downloadcomps --download-metadata
-    sudo docker run --rm --security-opt label=disable -v $repos_volume:/repos $image createrepo /repos/$repo
+    sudo docker run --rm --security-opt label=disable -v $repos_volume:/repos $image createrepo --update /repos/$repo
     echo "### END $repo ###"
 done
