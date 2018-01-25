@@ -13,4 +13,4 @@ fi
 
 pools=$(cat $pool_file)
 
-sudo docker build -t $tag --build-arg username=$username --build-arg password=$password --build-arg pools="$pools" -f $dockerfile .
+sudo docker build -t $tag --build-arg username=$username --build-arg password=$password --build-arg pools="$pools" --build-arg name=$tag -f $dockerfile .
